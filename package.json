@@ -1,0 +1,25 @@
+{
+  "name": "power-source",
+  "version": "0.1.0",
+  "proxy": "https://api.thunder.softoo.co/vis/api/dashboard/ssu/fixed",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "autoprefixer": "10.4.15",
+    "axios": "^1.5.0",
+    "echarts": "^5.4.3",
+    "echarts-for-react": "^3.0.2",
+    "next": "13.4.19",
+    "postcss": "8.4.29",
+    "react": "^18.2.0",
+    "react-dom": "18.2.0",
+    "recharts": "^2.8.0",
+    "swr": "^2.2.2",
+    "tailwindcss": "3.3.3"
+  }
+}
