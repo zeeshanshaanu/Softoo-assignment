@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import {
   BarChart,
@@ -11,11 +12,11 @@ import {
 } from "recharts";
 import useSWR from "swr";
 
-
-
 function EChartComponent() {
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
 
+
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  
   const { data: chartData, isLoading } = useSWR(
     "https://api.thunder.softoo.co/vis/api/dashboard/ssu/fixed",
     fetcher,
@@ -25,7 +26,7 @@ function EChartComponent() {
   );
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="text-center my-5 font-semibold text-xl">Power-sources chart Loading...</div>;
   }
 
   const processedData = chartData?.data?.reduce((result, item) => {
@@ -56,8 +57,10 @@ function EChartComponent() {
     }
 
     result[time_interval][date][sourceTag] += 1;
+
     return result;
   }, {});
+  // console.log("This is data",chartData);
 
   const chartDataArray = [];
 
@@ -75,12 +78,11 @@ function EChartComponent() {
     }
 
     chartDataArray.push(entry);
-    // console.log(chartDataArray);
   }
 
   return (
-    <div>
-      <ResponsiveContainer height={"100%"} width={"100%"}>
+    <div className="my-5">
+      <ResponsiveContainer height={850} width={"100%"}>
         <BarChart
           layout="vertical"
           data={chartDataArray}
