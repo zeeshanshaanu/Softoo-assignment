@@ -16,7 +16,7 @@ function EChartComponent() {
 
 
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  
+
   const { data: chartData, isLoading } = useSWR(
     "https://api.thunder.softoo.co/vis/api/dashboard/ssu/fixed",
     fetcher,
@@ -31,12 +31,13 @@ function EChartComponent() {
 
   const processedData = chartData?.data?.reduce((result, item) => {
     const date = item.date;
-    const time_interval = item.minute_window.split(" ")[1].slice(0, 5);
+     const time_interval = item.minute_window.split(" ")[1].slice(0, 5);
     const sourceTag = item.sourceTag;
 
     if (!result[time_interval]) {
       result[time_interval] = {};
     }
+   
 
     if (!result[time_interval][date]) {
       result[time_interval][date] = {
